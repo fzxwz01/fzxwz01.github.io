@@ -70,27 +70,51 @@
         
   
     <h1 class="entry-title">
-      <a class="article-title" href="/2019/05/12/react笔记/">react笔记</a>
+      <a class="article-title" href="/2019/05/14/react笔记/">react笔记</a>
     </h1>
   
 
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/12/react笔记/" data-id="cjvn4nlxl0002i0txtz0lm5a4" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/14/react笔记/" data-id="cjvnpnhw900034ctxx8g98a4x" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
     <div class="entry-content">
       
-        
+        <p><strong>React16之后的版本，称为React Fiber</strong></p>
+<h2 id="开发环境搭建"><a href="#开发环境搭建" class="headerlink" title="开发环境搭建"></a>开发环境搭建</h2><p>1.引入.js文件来使用react（大型项目中不适用）<br>2.使用脚手架工具来编码 官方工具 create-react-app<br>首先打开react官网，学习如何安装create-react-app<br><a href="https://react.docschina.org" target="_blank" rel="noopener">react中文站</a></p>
+<p>打开Node，在想要创建react工程的位置中使用命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npx create-react-app my-app//my-app是项目名称</span><br></pre></td></tr></table></figure></p>
+<p>这样，一个由脚手架创建的react项目就完成了</p>
+<hr>
+<p><strong>下面来了解一下react目录中各个文件的作用</strong><br>-lock.json：项目依赖安装包的版本号（尽量不要动）<br>readme.md: 项目的说明文件（一般都是自己用markdown重新编写）<br>package.json： 由脚手架自动生成的文件（一般不动）<br>gitignore: 不想上传到git的文件可以在这设置<br>node_modules文件夹：项目依赖的第三方的包<br>public：<br>favicon：网页的ico<br>index.html：项目首页的模板<br>manifest.json：设置serviceworker的文件（使得访问一个网页后留有缓存）<br>src文件：所有文件源代码</p>
+<hr>
+<p><strong>前端组件化</strong>：将网页一个个部分分为一个个组件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import App from <span class="string">'./App'</span>;/中，app就是一个一个组件</span><br><span class="line">//app.js</span><br><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import <span class="string">'./App.css'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">App</span></span>() &#123;//app返回什么，页面就显示什么</span><br><span class="line">  <span class="built_in">return</span> (</span><br><span class="line">    &lt;div className=<span class="string">"App"</span>&gt;</span><br><span class="line">      hello world</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default App;//将app组件导出</span><br><span class="line"></span><br><span class="line">//index.js</span><br><span class="line">import React from <span class="string">'react'</span>;</span><br><span class="line">import ReactDOM from <span class="string">'react-dom'</span>;</span><br><span class="line">import App from <span class="string">'./App'</span>;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(&lt;App /&gt;, document.getElementById(<span class="string">'root'</span>));</span><br><span class="line">//reactDom中的render方法将App组件挂载到id为root的节点下</span><br><span class="line">//&lt;App/&gt;是中jsx语法，所以需要import React</span><br></pre></td></tr></table></figure></p>
+<pre><code>凡是用到jsx语法，都要import React
+</code></pre><p>在js文件中写html标签，我们可以称为jsx语法<br>在jsx中，使用自己创建的组件，名称必须是大写字母开头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">import React ,&#123;Fragment&#125; from <span class="string">'react'</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">Todolist</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> (</span><br><span class="line">	&lt;Fragment&gt;      &#123;/*在jsx语法中，<span class="built_in">return</span>返回的东西必须最外层由一个元素包裹*/&#125; </span><br><span class="line">	&lt;div&gt;Todolist    &#123;/*如果不想多一个div导致布局失调，可以使用Fragment元素*/&#125;</span><br><span class="line">	&lt;input /&gt;&lt;button&gt;提交&lt;/button&gt;</span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">	&lt;li&gt;学react&lt;/li&gt;</span><br><span class="line">	&lt;li&gt;真让人头疼&lt;/li&gt;&lt;/ul&gt;</span><br><span class="line">	&lt;/Fragment&gt;</span><br><span class="line">	);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default Todolist;</span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>事件绑定</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">import React ,&#123; Component, Fragment&#125; from <span class="string">'react'</span></span><br><span class="line">class Todolist extends Component&#123;</span><br><span class="line">	constructor(props) &#123;    &#123;/*在constructor中建立两个变量*/&#125; </span><br><span class="line">		super(props)</span><br><span class="line">		this.state=&#123;</span><br><span class="line">			inputValue:<span class="string">'1111'</span>,</span><br><span class="line">			list:[]</span><br><span class="line">		&#125;</span><br><span class="line">	    </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">	<span class="built_in">return</span> (</span><br><span class="line">	&lt;Fragment&gt;</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">	&lt;input value=&#123;this.state.inputValue&#125;&#123;/*把input与数据绑定*/&#125; </span><br><span class="line">		onChange=&#123;this.handleinputChange.bind(this)&#125;/&gt;</span><br><span class="line">		&lt;button onClick=&#123;this.add.bind(this)&#125;&gt;提交&lt;/button&gt;&#123;/*提交按钮绑定事件*/&#125; </span><br><span class="line">	&lt;/div&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line"></span><br><span class="line">	&#123;this.state.list.map((item,index)=&gt;</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span> &lt;li key=&#123;index&#125; onClick=&#123;this.dele.bind(this,index)&#125;&gt;&#123;item&#125;&lt;/li&gt;</span><br><span class="line">	&#125;)&#125;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">	&lt;/Fragment&gt;</span><br><span class="line">	)</span><br><span class="line">	&#125;</span><br><span class="line">	handleinputChange(e)&#123;</span><br><span class="line">		this.setState(&#123;   &#123;/*`倘若想要修改this.state中的数据，必须使用this.setState`*/&#125; </span><br><span class="line">			inputValue:e.target.value</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	add(e)&#123;</span><br><span class="line">		this.setState(&#123;</span><br><span class="line">			list:[...this.state.list,this.state.inputValue],</span><br><span class="line">			inputValue:<span class="string">''</span></span><br><span class="line">		&#125;)</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	dele(index)&#123;      &#123;/*`因为immutable规则，state不允许我们做任何的改变`*/&#125; </span><br><span class="line"> 		const list=[...this.state.list]  &#123;/*`所以，我们不能对数据进行直接的操作`*/&#125;</span><br><span class="line"> 		list.splice(index,1)</span><br><span class="line"> 		this.setState(</span><br><span class="line">		&#123;</span><br><span class="line"> 			list:list</span><br><span class="line"></span><br><span class="line">		&#125;)</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> default Todolist;</span><br></pre></td></tr></table></figure></p>
+<h2 id="jsx语法细节补充"><a href="#jsx语法细节补充" class="headerlink" title="jsx语法细节补充"></a>jsx语法细节补充</h2><pre><code>jsx注释写法  {/*注释内容*/}或者
+</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">//注释内容 ，&#123;&#125;与//不能在一行</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>样式class名称防止warning可以用 className=&apos;***&apos;来定义
+倘若想要对输入内容的html标签不转义，可以使用 
+&lt;li dangerouslySetHTML={{_html:item}}&gt;
+{item}
+&lt;/li&gt;
+这样，输入的内容就不会被转义了
+</code></pre><hr>
+<p>之前，我们提到的网页组件化，同样的，我们可以把组件中的元素再次拆分为组件<br>比如之前Todolist中的li列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import React ,&#123; Component, Fragment&#125; from <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line">class Todoitem extends Component&#123;</span><br><span class="line">	constructor(props) &#123;</span><br><span class="line">		</span><br><span class="line">		super(props)</span><br><span class="line">		this.clickB=this.clickB.bind(this)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="title">render</span></span>()&#123;</span><br><span class="line">		<span class="built_in">return</span>(</span><br><span class="line">		&lt;div onClick=&#123;this.clickB&#125;&gt;&#123;this.props.content&#125;&lt;/div&gt;</span><br><span class="line">		)</span><br><span class="line">			</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	clickB(i)&#123;</span><br><span class="line">		this.props.delec(this.props.index);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">export</span> default Todoitem;</span><br></pre></td></tr></table></figure>
+
       
     </div><!-- .entry-content -->
 
     <footer class="entry-meta">
-    <a href="/2019/05/12/react笔记/">
-    <time datetime="2019-05-12T06:59:51.000Z" class="entry-date">
-        2019-05-12
+    <a href="/2019/05/14/react笔记/">
+    <time datetime="2019-05-14T11:25:16.479Z" class="entry-date">
+        2019-05-14
     </time>
 </a>
     
@@ -119,7 +143,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/10/vue笔记/" data-id="cjvn4nlxx0005i0txs25n6mgy" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/05/10/vue笔记/" data-id="cjvnpnhwc00044ctxfedhz7mq" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -198,7 +222,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/26/html笔记/" data-id="cjvn4nlxs0003i0txmsopbt2m" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/26/html笔记/" data-id="cjvnpnhv200024ctxtei53yw5" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -337,7 +361,7 @@
         
         <div class="comments-link">
             
-            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/23/利用hexo建立个人博客/" data-id="cjvn4nlxv0004i0tx16m0bigj" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
+            <a href="javascript:void(0);" data-url="http://yoursite.com/2019/04/23/利用hexo建立个人博客/" data-id="cjvnpnhwk00054ctxfhkdp8p6" class="leave-reply bdsharebuttonbox" data-cmd="more">Share</a>
         </div><!-- .comments-link -->
       </header><!-- .entry-header -->
 
@@ -421,7 +445,7 @@
       <ul>
         
           <li>
-            <a href="/2019/05/12/react笔记/">react笔记</a>
+            <a href="/2019/05/14/react笔记/">react笔记</a>
           </li>
         
           <li>
